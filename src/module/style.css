@@ -1,0 +1,24 @@
+.everyCell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* max-width: 100%; */
+    /* max-height: 100%; */
+    &.itemSelect {
+        background-color: rgba(102, 104, 0, 0.555) !important;
+    }
+}
+.everyFigure {
+    width: 60%;
+}
+.placeholder {
+    position: absolute;
+    width: 30%;
+    height: 30%;
+    border-radius: 100%;
+    background-color: blue;
+}
+.placeholderFigure {
+    background-color: rgba(165, 42, 42, 0.582) !important;
+}
