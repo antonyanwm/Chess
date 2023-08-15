@@ -17,7 +17,6 @@ const Cell = memo(
                 onClick={handleCellClick}
             >
                 {item.placeholder && !item.figure && <div className="placeholder"></div>}
-                {console.log("komponent")}
                 {item.figure && <img className="everyFigure" src={item.figure[item.figure.player]} alt="Figure" />}
             </div>
         );

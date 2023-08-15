@@ -5,6 +5,8 @@ import "./style.css";
 import { Board } from "../../module/CreateDeskFigure";
 
 export let updateBoardFigureStep = [];
+const marker = ["a", "b", "c", "d", "e", "f", "g", "h"];
+
 let initialPlayer = "white";
 let coordinatesKing = null;
 
@@ -19,6 +21,8 @@ function kingStepAvialable(prevData) {
             coordinatesKing = elem.y + elem.x;
         }
     });
+    updateBoardFigureStep = [...new Set(updateBoardFigureStep)];
+
     return prevData;
 }
 
@@ -28,12 +32,39 @@ const ChessBoard = memo(() => {
     const everyClick = useCallback(
         (item, ev) => {
             if (updateBoardFigureStep.includes(coordinatesKing)) {
-                console.log("shax");
             } else {
                 if (item.figure && item.figure.player == initialPlayer) {
                     setChessBoardData((prevData) => {
                         let step = item.figure.step(item, prevData, initialPlayer);
+                        if (item.figure) {
+                            function availableStepNoKingAttacked(prevData) {
+                                //step,item
+                                let newStep = step;
+                                step.forEach((e, i) => {
+                                    let newBoardNextStep = prevData.map((elem) => {
+                                        if (item.id === elem.id) {
+                                            return { ...item, figure: null };
+                                        }
+                                        if (elem.y + elem.x == step[i]) {
+                                            return { ...elem, figure: { ...item.figure } };
+                                        }
+                                        return elem;
+                                    });
+                                    kingStepAvialable(newBoardNextStep);
 
+                                    if (updateBoardFigureStep.includes(coordinatesKing)) {
+                                        newStep = newStep.filter((el) => {
+                                            return el !== step[i];
+                                        });
+                                    }
+                                    updateBoardFigureStep = [];
+                                    coordinatesKing = null;
+                                });
+                                return newStep;
+                            }
+                            let newStep = availableStepNoKingAttacked(prevData);
+                            step = newStep ?? step;
+                        }
                         return prevData.map((elem) => {
                             if (elem.id === item.id) {
                                 return { ...elem, selected: !elem.selected };
@@ -55,8 +86,6 @@ const ChessBoard = memo(() => {
                     });
                 } else if (item.placeholder) {
                     setChessBoardData((prevData) => {
-                        let nextStepTestKing = prevData.filter((el) => (el.selected === true ? el.figure : ""))[0].figure;
-                        console.log(nextStepTestKing.step({ ...item, figure: nextStepTestKing }, prevData, initialPlayer, true));
                         initialPlayer === "black" ? (initialPlayer = "white") : (initialPlayer = "black");
 
                         return prevData.map((elem) => {
@@ -80,17 +109,11 @@ const ChessBoard = memo(() => {
                         return kingStepAvialable(prevData);
                     });
                 } else {
-                    console.log(coordinatesKing);
-                    // console.log(updateBoardFigureStep);
-                    console.log([...new Set(updateBoardFigureStep)]);
-                    console.log(chessBoardData);
                 }
             }
         },
         [chessBoardData]
     );
-
-    const marker = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
     return (
         <div className="ChessBoard">

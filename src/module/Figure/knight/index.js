@@ -36,7 +36,6 @@ export const initialKnight = {
         if (data[item.id + 10] && data[item.id + 10]?.x === item.x - 1 && data[item.id + 10]?.figure?.player !== item.figure.player) {
             placeholderStep.push(data[item.id + 10].y + data[item.id + 10].x);
         }
-        // console.log(placeholderStep);
 
         return placeholderStep;
     },

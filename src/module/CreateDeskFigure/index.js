@@ -10,8 +10,4 @@ export class Board {
         this.selected = selected || false;
         this.placeholder = placeholder || false;
     }
-    steps() {
-        console.log(this);
-        console.log(123);
-    }
 }

@@ -49,10 +49,9 @@ export const initialKing = {
         ) {
             placeholderStep.push(data[item.id - 1].y + data[item.id - 1].x);
         }
-        let kingPlaceholderStep = [...new Set(updateBoardFigureStep)];
 
         return placeholderStep.filter((item) => {
-            return !kingPlaceholderStep.includes(item);
+            return !updateBoardFigureStep.includes(item);
         });
     },
 };
