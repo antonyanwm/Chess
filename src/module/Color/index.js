@@ -1,4 +1,4 @@
 export const colorBoard = {
-    white: "white",
-    black: "green",
+	white: 'white',
+	black: 'green',
 };
