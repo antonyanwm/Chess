@@ -1,75 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta
-			name="viewport"
-			content="width=device-width, initial-scale=1" />
-		<meta
-			name="theme-color"
-			content="#332D83" />
-		<meta
-			name="description"
-			content="Chess, OOP, Folder Structure, Data Structure, HTML, CSS, React, game, App" />
-		<meta
-			name="google-site-verification"
-			content="ac6ADF8ifEy6akfSH9uRoZ5Zl_YG-iK9VfOm_Q0AJOM" />
-		<meta
-			name="msapplication-TileColor"
-			content="#332D83" />
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#332D83" />
+        <meta name="description" content="Chess, OOP, Folder Structure, Data Structure, HTML, CSS, React, game, App" />
+        <meta name="google-site-verification" content="ac6ADF8ifEy6akfSH9uRoZ5Zl_YG-iK9VfOm_Q0AJOM" />
+        <meta name="msapplication-TileColor" content="#332D83" />
 
-		<meta
-			property="og:title"
-			content="Chess" />
-		<meta
-			property="og:type"
-			content="Chess" />
-		<meta
-			property="og:url"
-			content="https://chess-bay-nine.vercel.app/" />
-		<meta
-			property="og:image"
-			content="./favicon-32x32.png" />
-		<meta
-			property="og:locale"
-			content="en_US" />
-		<meta
-			property="og:description"
-			content="Chess, OOP, Folder Structure, Data Structure, HTML, CSS, React, game, App" />
+        <meta property="og:title" content="Chess" />
+        <meta property="og:type" content="Chess" />
+        <meta property="og:url" content="https://chess-bay-nine.vercel.app/" />
+        <meta property="og:image" content="./favicon-32x32.png" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:description" content="Chess, OOP, Folder Structure, Data Structure, HTML, CSS, React, game, App" />
 
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="/apple-touch-icon.png" />
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="/favicon-32x32.png" />
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="/favicon-16x16.png" />
-		<link
-			rel="manifest"
-			href="/site.webmanifest" />
-		<link
-			rel="mask-icon"
-			href="/safari-pinned-tab.svg"
-			color="#5bbad5" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
 
-		<link
-			rel="canonical"
-			href="https://chess-bay-nine.vercel.app/" />
+        <link rel="canonical" href="https://chess-bay-nine.vercel.app/" />
 
-		<title>Custom Chess Game</title>
-	</head>
+        <title>Custom Chess Game</title>
+    </head>
 
-	<body>
-		<noscript>You need to enable JavaScript to run this app.</noscript>
-		<div id="root"></div>
+    <body>
+        <noscript>You need to enable JavaScript to run this app.</noscript>
+        <div id="root"></div>
 
-		<script async type='text/javascript' dangerouslySetInnerHTML={{ __html: ` var sw = { "url": "\/service-worker.js" }; if ( 'serviceWorker' in navigator ) { window.addEventListener( 'load', function () { console.log( 'loading SW' ) navigator.serviceWorker.register( sw.url ) .then( function ( registration ) { console.log( 'Chess service worker registered' ); } ) .catch( function ( error ) { console.log( 'Registration failed with ' + error ); } ); } ); } `, }} />
-	</body>
+        <script>
+            var sw = { url: "/service-worker.js" };
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    console.log("loading SW");
+                    navigator.serviceWorker
+                        .register(sw.url)
+                        .then(function (registration) {
+                            console.log("Chess service worker registered");
+                        })
+                        .catch(function (error) {
+                            console.log("Registration failed with " + error);
+                        });
+                });
+            }
+        </script>
+        <!-- <script async type='text/javascript' dangerouslySetInnerHTML={{ __html: ` var sw = { "url": "\/service-worker.js" }; if ( 'serviceWorker' in navigator ) { window.addEventListener( 'load', function () { console.log( 'loading SW' ) navigator.serviceWorker.register( sw.url ) .then( function ( registration ) { console.log( 'Chess service worker registered' ); } ) .catch( function ( error ) { console.log( 'Registration failed with ' + error ); } ); } ); } `, }} /> -->
+    </body>
 </html>
