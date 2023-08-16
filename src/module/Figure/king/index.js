@@ -1,4 +1,3 @@
-import { updateBoardFigureStep } from "../../../Components/ChessBoard/ChessBoard";
 import bK from "./bK.png";
 import wK from "./wK.png";
 
@@ -49,9 +48,9 @@ export const initialKing = {
         ) {
             placeholderStep.push(data[item.id - 1].y + data[item.id - 1].x);
         }
-
-        return placeholderStep.filter((item) => {
-            return !updateBoardFigureStep.includes(item);
-        });
+        // return placeholderStep.filter((item) => {
+        //     return !updateBoardFigureStep.includes(item);
+        // });
+        return placeholderStep;
     },
 };
