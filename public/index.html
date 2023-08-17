@@ -33,7 +33,7 @@
         <script>
             var sw = { url: "/service-worker.js" };
             if ("serviceWorker" in navigator) {
-                window.addEventListener("load", function () {
+                document.addEventListener("load", function () {
                     console.log("loading SW");
                     navigator.serviceWorker
                         .register(sw.url)

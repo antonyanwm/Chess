@@ -10,18 +10,20 @@ import { availableStepNoKingAttacked } from "../../Engine/EngineChessTwoPlayers"
 
 //* Styles
 import "./style.css";
+import NewFigurePawns from "../NewFigurePawns/NewFigurePawns";
 
+//! Initial values
 let initialPlayer = "white";
+
 const marker = ["a", "b", "c", "d", "e", "f", "g", "h"];
 
 const ChessBoard = memo(() => {
-    //! Initial values
-
     //! State
     const [chessBoardData, setChessBoardData] = useState(boardData);
 
     const everyClick = useCallback(
         (item, ev) => {
+            // clickItem = item;
             if (item.figure && item.figure.player == initialPlayer) {
                 setChessBoardData((prevData) => {
                     let step = item.figure.step(item, prevData, initialPlayer);
@@ -69,21 +71,34 @@ const ChessBoard = memo(() => {
                     });
                 });
                 // setChessBoardData((prevData) => {
-                //     return kingStepAvialable(prevData);
+                // return kingStepAvialable(prevData);
+
                 // });
             } else {
+                // console.log(chessBoardData);
             }
         },
         [chessBoardData]
     );
-
+    let pawnsFigureUpdate = null;
     return (
         <div className="ChessBoard">
             {console.log("render")}
             <div className="border">
                 {chessBoardData.map((item) => {
+                    if (item.figure?.name === "pawns" && (item.x === 1 || item.x === 8)) {
+                        pawnsFigureUpdate = item;
+                    }
                     return <Cell key={item.id} item={item} onClick={everyClick} />;
                 })}
+                {pawnsFigureUpdate && (
+                    <NewFigurePawns
+                        setAllData={(data) => {
+                            setChessBoardData(data);
+                        }}
+                        pawnsFigure={pawnsFigureUpdate}
+                    />
+                )}
             </div>
 
             <div className="markerBottom">
